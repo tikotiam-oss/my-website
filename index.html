@@ -1,179 +1,700 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Tivaz - تيشورتات حسب الطلب</title>
-  <style>
-    :root{
-      --bg1: #000;
-      --bg2: #0a1629;
-      --accent: #1e90ff;
-      --accent-glow: #4db8ff;
-      --card-bg: rgba(255,255,255,0.04);
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: "Segoe UI", Tahoma, Arial, sans-serif;
-      background: linear-gradient(135deg,var(--bg1),var(--bg2));
-      color:#fff;
-    }
-
-    /* ===== HEADER ===== */
-    header{
-      padding:25px 16px;
-      text-align:center;
-      border-bottom:1px solid rgba(255,255,255,0.06);
-      margin-bottom:20px;
-    }
-    .logo-text{
-      font-size:40px;
-      font-weight:800;
-      color:var(--accent);
-      text-shadow: 0 0 8px var(--accent-glow),
-                   0 0 16px var(--accent),
-                   0 0 30px var(--accent-glow);
-      letter-spacing:2px;
-    }
-    .subtitle{
-      font-size:14px;
-      color:#bcd6ffb3;
-      margin-top:5px;
-    }
-
-    /* ===== GRID ===== */
-    main{padding:20px;}
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-      gap:20px;
-      max-width:1000px;
-      margin:0 auto;
-    }
-
-    /* ===== CARD ===== */
-    .card{
-      background:var(--card-bg);
-      border:1px solid rgba(77,166,255,0.1);
-      padding:16px;
-      border-radius:14px;
-      text-align:center;
-      transition:transform .25s ease, box-shadow .25s ease;
-    }
-    .card:hover{
-      transform:translateY(-8px);
-      box-shadow:0 12px 30px rgba(0,0,0,0.7);
-    }
-    .card img{
-      width:100%;
-      max-width:220px;
-      height:auto;
-      border-radius:10px;
-      border:2px solid rgba(77,166,255,0.15);
-      background:#0b1220;
-      margin-bottom:10px;
-    }
-    .product-name{
-      font-weight:700;
-      font-size:18px;
-      margin:6px 0;
-      color:#eaf4ff;
-    }
-    .product-desc{
-      font-size:13px;
-      margin:0;
-      color:#9fb6ffb3;
-    }
-    .price{
-      margin:10px 0;
-      font-weight:700;
-      font-size:16px;
-      color:var(--accent);
-    }
-
-    /* ===== BUTTON ===== */
-    .btn{
-      display:inline-block;
-      width:100%;
-      padding:12px;
-      border:none;
-      border-radius:10px;
-      background: linear-gradient(90deg,var(--accent),var(--accent-glow));
-      color:#001;
-      font-weight:700;
-      font-size:15px;
-      cursor:pointer;
-      transition:transform .2s, box-shadow .2s;
-    }
-    .btn:hover{
-      transform:scale(1.04);
-      box-shadow:0 0 15px var(--accent-glow);
-    }
-
-    /* ===== FOOTER ===== */
-    footer{
-      text-align:center;
-      padding:20px;
-      color:#9fb6ff99;
-      border-top:1px solid rgba(255,255,255,0.04);
-      margin-top:40px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tivaz - تيشرتات سوداء حسب الطلب</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+        }
+        
+        /* Glowing Logo */
+        .glow-logo {
+            color: #1e3a8a;
+            text-shadow: 
+                0 0 5px #3b82f6,
+                0 0 10px #3b82f6,
+                0 0 15px #3b82f6,
+                0 0 20px #1e40af,
+                0 0 35px #1e40af,
+                0 0 40px #1e40af;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 
+                    0 0 5px #3b82f6,
+                    0 0 10px #3b82f6,
+                    0 0 15px #3b82f6,
+                    0 0 20px #1e40af,
+                    0 0 35px #1e40af,
+                    0 0 40px #1e40af;
+            }
+            to {
+                text-shadow: 
+                    0 0 10px #3b82f6,
+                    0 0 20px #3b82f6,
+                    0 0 30px #3b82f6,
+                    0 0 40px #1e40af,
+                    0 0 70px #1e40af,
+                    0 0 80px #1e40af;
+            }
+        }
+        
+        /* Neumorphism Styles */
+        .neu-card {
+            background: #2a2a2a;
+            border-radius: 20px;
+            box-shadow: 
+                20px 20px 60px #0a0a0a,
+                -20px -20px 60px #404040;
+        }
+        
+        .neu-button {
+            background: #2a2a2a;
+            border-radius: 15px;
+            box-shadow: 
+                8px 8px 16px #0a0a0a,
+                -8px -8px 16px #404040;
+            transition: all 0.3s ease;
+        }
+        
+        .neu-button:hover {
+            box-shadow: 
+                4px 4px 8px #0a0a0a,
+                -4px -4px 8px #404040;
+        }
+        
+        .neu-button:active {
+            box-shadow: 
+                inset 4px 4px 8px #0a0a0a,
+                inset -4px -4px 8px #404040;
+        }
+        
+        .neu-input {
+            background: #2a2a2a;
+            border-radius: 12px;
+            box-shadow: 
+                inset 6px 6px 12px #0a0a0a,
+                inset -6px -6px 12px #404040;
+            border: none;
+            outline: none;
+            color: #ffffff;
+        }
+        
+        .neu-container {
+            background: #2a2a2a;
+            border-radius: 25px;
+            box-shadow: 
+                25px 25px 50px #0a0a0a,
+                -25px -25px 50px #404040;
+        }
+        
+        .design-canvas {
+            background: #1a1a1a;
+            border-radius: 15px;
+            box-shadow: 
+                inset 10px 10px 20px #000000,
+                inset -10px -10px 20px #333333;
+        }
+        
+        .black-tshirt {
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+        }
+        
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .selected-option {
+            background: #1e40af !important;
+            box-shadow: 
+                inset 4px 4px 8px #000000,
+                inset -4px -4px 8px #3b82f6 !important;
+        }
+    </style>
 </head>
-<body>
+<body class="min-h-screen">
+    <!-- Header -->
+    <header class="p-6">
+        <div class="container mx-auto">
+            <div class="neu-card p-6">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center space-x-4 space-x-reverse">
+                        <h1 class="text-4xl font-bold glow-logo">Tivaz</h1>
+                        <span class="text-gray-400">|</span>
+                        <span class="text-gray-400">تيشرتات ملونة مخصصة</span>
+                    </div>
+                    
+                    <nav class="hidden md:flex space-x-8 space-x-reverse">
+                        <a href="#home" class="text-gray-300 hover:text-blue-400 transition-colors">الرئيسية</a>
+                        <a href="#designer" class="text-gray-300 hover:text-blue-400 transition-colors">المصمم</a>
+                        <a href="#gallery" class="text-gray-300 hover:text-blue-400 transition-colors">المعرض</a>
+                        <a href="#contact" class="text-gray-300 hover:text-blue-400 transition-colors">اتصل بنا</a>
+                    </nav>
+                    
+                    <button id="cartBtn" class="neu-button px-6 py-3 text-gray-300 font-semibold relative">
+                        🛒 السلة
+                        <span id="cartCount" class="absolute -top-2 -right-2 bg-blue-600 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
 
-  <!-- Header -->
-  <header>
-    <div class="logo-text">Tivaz</div>
-    <div class="subtitle">تيشورتات حسب الطلب</div>
-  </header>
+    <!-- Hero Section -->
+    <section id="home" class="py-16">
+        <div class="container mx-auto px-6">
+            <div class="neu-container p-12 text-center">
+                <div class="floating-element">
+                    <h2 class="text-5xl font-bold text-white mb-6">التيشرت الملون المثالي</h2>
+                    <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                        في Tivaz، نتخصص في تصميم التيشرتات الملونة الفاخرة حسب الطلب. أناقة لا تضاهى وجودة استثنائية بأسعار منافسة
+                    </p>
+                    <button onclick="document.getElementById('designer').scrollIntoView({behavior: 'smooth'})" 
+                            class="neu-button px-8 py-4 text-white font-bold text-lg">
+                        صمم تيشرتك الآن
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Main Products -->
-  <main>
-    <div class="grid">
-      <!-- Product 1 -->
-      <article class="card">
-        <img src="https://i.ibb.co/1zv5w6b/black-tshirt.png" alt="Classic Black T-Shirt">
-        <div class="product-name">Classic Black</div>
-        <p class="product-desc">تيشورت أسود كلاسيكي - قطن مريح</p>
-        <div class="price">د.ج 2500</div>
-        <button class="btn">Order Now</button>
-      </article>
+    <!-- Designer Section -->
+    <section id="designer" class="py-16">
+        <div class="container mx-auto px-6">
+            <div class="neu-card p-8">
+                <h3 class="text-3xl font-bold text-center text-white mb-12">مصمم التيشرتات الملونة</h3>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Design Canvas -->
+                    <div class="space-y-6">
+                        <div class="design-canvas p-8 min-h-96 flex items-center justify-center relative" id="designCanvas">
+                            <div class="text-center">
+                                <!-- Black T-shirt SVG -->
+                                <svg width="300" height="350" viewBox="0 0 300 350" class="mx-auto black-tshirt">
+                                    <defs>
+                                        <linearGradient id="tshirtGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#1e40af;stop-opacity:1" />
+                                            <stop offset="50%" style="stop-color:#3b82f6;stop-opacity:1" />
+                                            <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:1" />
+                                        </linearGradient>
+                                    </defs>
+                                    <path d="M75 80 L225 80 L225 100 L270 100 L270 140 L250 140 L250 320 L50 320 L50 140 L30 140 L30 100 L75 100 Z" 
+                                          fill="url(#tshirtGradient)" stroke="#1e40af" stroke-width="2"/>
+                                    <ellipse cx="150" cy="75" rx="40" ry="18" fill="url(#tshirtGradient)" stroke="#1e40af" stroke-width="2"/>
+                                </svg>
+                                
+                                <!-- Design Text Overlay -->
+                                <div id="designText" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl font-bold" style="color: #ffffff;">
+                                    نصك هنا
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Price Display -->
+                        <div class="neu-card p-6 text-center">
+                            <h4 class="text-xl font-semibold text-white mb-2">السعر الإجمالي</h4>
+                            <p id="totalPrice" class="text-3xl font-bold text-blue-400">3000 دج</p>
+                            <p class="text-sm text-gray-300 mt-2">شامل الطباعة المخصصة</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Design Controls -->
+                    <div class="space-y-8">
+                        <!-- Text Input -->
+                        <div class="neu-card p-6">
+                            <h4 class="text-xl font-semibold text-white mb-4">النص المطلوب طباعته</h4>
+                            <input type="text" id="textInput" placeholder="اكتب النص المطلوب هنا..." 
+                                   class="neu-input w-full p-4 text-white" onkeyup="updateDesignText()">
+                            <p class="text-sm text-gray-300 mt-2">الحد الأقصى: 50 حرف</p>
+                        </div>
+                        
+                        <!-- T-shirt Color Selection -->
+                        <div class="neu-card p-6">
+                            <h4 class="text-xl font-semibold text-white mb-4">لون التيشرت</h4>
+                            <div class="grid grid-cols-4 gap-4">
+                                <div class="neu-button p-3 text-center cursor-pointer tshirt-color-option" 
+                                     onclick="changeTshirtColor('#1e40af', '#3b82f6', '#60a5fa', this)" data-color="blue">
+                                    <div class="w-8 h-8 mx-auto mb-2 rounded-full bg-blue-600"></div>
+                                    <span class="text-xs text-gray-300">أزرق</span>
+                                </div>
+                                <div class="neu-button p-3 text-center cursor-pointer tshirt-color-option selected-option" 
+                                     onclick="changeTshirtColor('#000000', '#1a1a1a', '#2d2d2d', this)" data-color="black">
+                                    <div class="w-8 h-8 mx-auto mb-2 rounded-full bg-black border border-gray-400"></div>
+                                    <span class="text-xs text-gray-300">أسود</span>
+                                </div>
+                                <div class="neu-button p-3 text-center cursor-pointer tshirt-color-option" 
+                                     onclick="changeTshirtColor('#dc2626', '#ef4444', '#f87171', this)" data-color="red">
+                                    <div class="w-8 h-8 mx-auto mb-2 rounded-full bg-red-600"></div>
+                                    <span class="text-xs text-gray-300">أحمر</span>
+                                </div>
+                                <div class="neu-button p-3 text-center cursor-pointer tshirt-color-option" 
+                                     onclick="changeTshirtColor('#059669', '#10b981', '#34d399', this)" data-color="green">
+                                    <div class="w-8 h-8 mx-auto mb-2 rounded-full bg-green-600"></div>
+                                    <span class="text-xs text-gray-300">أخضر</span>
+                                </div>
+                                <div class="neu-button p-3 text-center cursor-pointer tshirt-color-option" 
+                                     onclick="changeTshirtColor('#7c2d12', '#a16207', '#d97706', this)" data-color="brown">
+                                    <div class="w-8 h-8 mx-auto mb-2 rounded-full bg-yellow-700"></div>
+                                    <span class="text-xs text-gray-300">بني</span>
+                                </div>
+                                <div class="neu-button p-3 text-center cursor-pointer tshirt-color-option" 
+                                     onclick="changeTshirtColor('#7c3aed', '#8b5cf6', '#a78bfa', this)" data-color="purple">
+                                    <div class="w-8 h-8 mx-auto mb-2 rounded-full bg-purple-600"></div>
+                                    <span class="text-xs text-gray-300">بنفسجي</span>
+                                </div>
+                                <div class="neu-button p-3 text-center cursor-pointer tshirt-color-option" 
+                                     onclick="changeTshirtColor('#374151', '#6b7280', '#9ca3af', this)" data-color="gray">
+                                    <div class="w-8 h-8 mx-auto mb-2 rounded-full bg-gray-600"></div>
+                                    <span class="text-xs text-gray-300">رمادي</span>
+                                </div>
+                                <div class="neu-button p-3 text-center cursor-pointer tshirt-color-option" 
+                                     onclick="changeTshirtColor('#f8fafc', '#e2e8f0', '#cbd5e1', this)" data-color="white">
+                                    <div class="w-8 h-8 mx-auto mb-2 rounded-full bg-white border border-gray-400"></div>
+                                    <span class="text-xs text-gray-300">أبيض</span>
+                                </div>
+                            </div>
+                        </div>
 
-      <!-- Product 2 -->
-      <article class="card">
-        <img src="https://picsum.photos/seed/navy/400/400" alt="Deep Navy T-Shirt">
-        <div class="product-name">Deep Navy</div>
-        <p class="product-desc">تيشورت بلون أزرق غامق - لمسة أنيقة</p>
-        <div class="price">د.ج 2800</div>
-        <button class="btn">Order Now</button>
-      </article>
+                        <!-- Text Color -->
+                        <div class="neu-card p-6">
+                            <h4 class="text-xl font-semibold text-white mb-4">لون النص</h4>
+                            <div class="grid grid-cols-4 gap-4">
+                                <div class="neu-button p-3 text-center cursor-pointer text-color-option selected-option" 
+                                     onclick="changeTextColor('#ffffff', this)" data-color="#ffffff">
+                                    <div class="w-8 h-8 mx-auto mb-2 rounded-full bg-white border-2 border-gray-300"></div>
+                                    <span class="text-xs text-gray-300">أبيض</span>
+                                </div>
+                                <div class="neu-button p-3 text-center cursor-pointer text-color-option" 
+                                     onclick="changeTextColor('#fbbf24', this)" data-color="#fbbf24">
+                                    <div class="w-8 h-8 mx-auto mb-2 rounded-full bg-yellow-400"></div>
+                                    <span class="text-xs text-gray-300">ذهبي</span>
+                                </div>
+                                <div class="neu-button p-3 text-center cursor-pointer text-color-option" 
+                                     onclick="changeTextColor('#ef4444', this)" data-color="#ef4444">
+                                    <div class="w-8 h-8 mx-auto mb-2 rounded-full bg-red-500"></div>
+                                    <span class="text-xs text-gray-300">أحمر</span>
+                                </div>
+                                <div class="neu-button p-3 text-center cursor-pointer text-color-option" 
+                                     onclick="changeTextColor('#3b82f6', this)" data-color="#3b82f6">
+                                    <div class="w-8 h-8 mx-auto mb-2 rounded-full bg-blue-500"></div>
+                                    <span class="text-xs text-gray-300">أزرق</span>
+                                </div>
+                                <div class="neu-button p-3 text-center cursor-pointer text-color-option" 
+                                     onclick="changeTextColor('#10b981', this)" data-color="#10b981">
+                                    <div class="w-8 h-8 mx-auto mb-2 rounded-full bg-green-500"></div>
+                                    <span class="text-xs text-gray-300">أخضر</span>
+                                </div>
+                                <div class="neu-button p-3 text-center cursor-pointer text-color-option" 
+                                     onclick="changeTextColor('#8b5cf6', this)" data-color="#8b5cf6">
+                                    <div class="w-8 h-8 mx-auto mb-2 rounded-full bg-purple-500"></div>
+                                    <span class="text-xs text-gray-300">بنفسجي</span>
+                                </div>
+                                <div class="neu-button p-3 text-center cursor-pointer text-color-option" 
+                                     onclick="changeTextColor('#f59e0b', this)" data-color="#f59e0b">
+                                    <div class="w-8 h-8 mx-auto mb-2 rounded-full bg-orange-500"></div>
+                                    <span class="text-xs text-gray-300">برتقالي</span>
+                                </div>
+                                <div class="neu-button p-3 text-center cursor-pointer text-color-option" 
+                                     onclick="changeTextColor('#ec4899', this)" data-color="#ec4899">
+                                    <div class="w-8 h-8 mx-auto mb-2 rounded-full bg-pink-500"></div>
+                                    <span class="text-xs text-gray-300">وردي</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Size Selection -->
+                        <div class="neu-card p-6">
+                            <h4 class="text-xl font-semibold text-white mb-4">المقاس</h4>
+                            <div class="grid grid-cols-2 gap-4">
+                                <button class="neu-button p-4 text-gray-300 size-btn" data-size="S" onclick="selectSize('S', this)">
+                                    <div class="text-center">
+                                        <div class="text-lg font-bold">S</div>
+                                        <div class="text-xs">صغير</div>
+                                    </div>
+                                </button>
+                                <button class="neu-button p-4 text-white size-btn selected-option" data-size="M" onclick="selectSize('M', this)">
+                                    <div class="text-center">
+                                        <div class="text-lg font-bold">M</div>
+                                        <div class="text-xs">متوسط</div>
+                                    </div>
+                                </button>
+                                <button class="neu-button p-4 text-gray-300 size-btn" data-size="L" onclick="selectSize('L', this)">
+                                    <div class="text-center">
+                                        <div class="text-lg font-bold">L</div>
+                                        <div class="text-xs">كبير</div>
+                                    </div>
+                                </button>
+                                <button class="neu-button p-4 text-gray-300 size-btn" data-size="XL" onclick="selectSize('XL', this)">
+                                    <div class="text-center">
+                                        <div class="text-lg font-bold">XL</div>
+                                        <div class="text-xs">كبير جداً</div>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Quantity -->
+                        <div class="neu-card p-6">
+                            <h4 class="text-xl font-semibold text-white mb-4">الكمية</h4>
+                            <div class="flex items-center justify-center space-x-4 space-x-reverse">
+                                <button class="neu-button w-12 h-12 text-xl font-bold text-gray-300" onclick="changeQuantity(-1)">-</button>
+                                <span id="quantity" class="text-2xl font-bold text-white mx-4">1</span>
+                                <button class="neu-button w-12 h-12 text-xl font-bold text-gray-300" onclick="changeQuantity(1)">+</button>
+                            </div>
+                            <p class="text-sm text-gray-300 text-center mt-2">خصم 5% للكميات أكثر من 5 قطع</p>
+                        </div>
+                        
+                        <!-- Custom Drawing Request -->
+                        <div class="neu-card p-6">
+                            <h4 class="text-xl font-semibold text-white mb-4">طلب رسمة مخصصة 🎨</h4>
+                            <div class="space-y-4">
+                                <textarea id="drawingRequest" placeholder="اكتب وصف الرسمة المطلوبة هنا... (مثال: رسمة أسد، شعار شركة، رسمة كرتونية، إلخ)" 
+                                          class="neu-input w-full p-4 text-white h-24 resize-none"></textarea>
+                                <div class="flex items-center space-x-3 space-x-reverse">
+                                    <input type="checkbox" id="hasDrawing" class="w-5 h-5 text-blue-600 rounded" onchange="toggleDrawingRequest()">
+                                    <label for="hasDrawing" class="text-gray-300">أريد إضافة رسمة مخصصة (+500 دج)</label>
+                                </div>
+                                <p class="text-sm text-gray-400">
+                                    💡 سيتم التواصل معك لتأكيد تفاصيل الرسمة قبل البدء في التنفيذ
+                                </p>
+                            </div>
+                        </div>
 
-      <!-- Product 3 -->
-      <article class="card">
-        <img src="https://picsum.photos/seed/gray/400/400" alt="Heather Gray T-Shirt">
-        <div class="product-name">Heather Gray</div>
-        <p class="product-desc">قماش خفيف ومريح - مناسب للصيف</p>
-        <div class="price">د.ج 2200</div>
-        <button class="btn">Order Now</button>
-      </article>
+                        <!-- Add to Cart Button -->
+                        <button onclick="addToCart()" class="neu-button w-full p-4 text-xl font-bold text-white hover:text-blue-400">
+                            أضف إلى السلة 🛒
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      <!-- Product 4 -->
-      <article class="card">
-        <img src="https://picsum.photos/seed/white/400/400" alt="Sport White T-Shirt">
-        <div class="product-name">Sport White</div>
-        <p class="product-desc">تيشورت أبيض رياضي - تنفس جيد</p>
-        <div class="price">د.ج 2400</div>
-        <button class="btn">Order Now</button>
-      </article>
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16">
+        <div class="container mx-auto px-6">
+            <div class="neu-card p-8">
+                <h3 class="text-3xl font-bold text-center text-white mb-12">معرض تصاميم Tivaz</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="neu-card p-6 text-center">
+                        <div class="w-full h-48 bg-gradient-to-br from-gray-800 to-black rounded-lg mb-4 flex items-center justify-center">
+                            <span class="text-white text-xl font-bold">TIVAZ STYLE</span>
+                        </div>
+                        <h4 class="text-lg font-semibold text-gray-800">تيشرت كلاسيكي</h4>
+                        <p class="text-gray-600">3200 دج</p>
+                    </div>
+                    
+                    <div class="neu-card p-6 text-center">
+                        <div class="w-full h-48 bg-gradient-to-br from-gray-900 to-gray-700 rounded-lg mb-4 flex items-center justify-center">
+                            <span class="text-yellow-400 text-xl font-bold">LUXURY</span>
+                        </div>
+                        <h4 class="text-lg font-semibold text-gray-800">تيشرت فاخر</h4>
+                        <p class="text-gray-600">3800 دج</p>
+                    </div>
+                    
+                    <div class="neu-card p-6 text-center">
+                        <div class="w-full h-48 bg-gradient-to-br from-black to-gray-800 rounded-lg mb-4 flex items-center justify-center">
+                            <span class="text-red-500 text-xl font-bold">CUSTOM</span>
+                        </div>
+                        <h4 class="text-lg font-semibold text-gray-800">تيشرت مخصص</h4>
+                        <p class="text-gray-600">3500 دج</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16">
+        <div class="container mx-auto px-6">
+            <div class="neu-card p-8 text-center">
+                <h3 class="text-3xl font-bold text-gray-800 mb-8">تواصل مع Tivaz</h3>
+                <div class="max-w-2xl mx-auto">
+                    <p class="text-gray-600 mb-6">فريق Tivaz جاهز لمساعدتك في تصميم التيشرت الأسود المثالي</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="neu-card p-6">
+                            <h4 class="font-semibold text-gray-800 mb-2">📞 الهاتف</h4>
+                            <p class="text-gray-600">+213 555 TIVAZ</p>
+                        </div>
+                        <div class="neu-card p-6">
+                            <h4 class="font-semibold text-gray-800 mb-2">✉️ البريد الإلكتروني</h4>
+                            <p class="text-gray-600">info@tivaz.dz</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="neu-card p-8 w-full max-w-md">
+                <div class="flex justify-between items-center mb-6">
+                    <h4 class="text-2xl font-bold text-gray-800">سلة Tivaz</h4>
+                    <button id="closeCart" class="neu-button w-10 h-10 text-gray-700">✕</button>
+                </div>
+                <div id="cartItems" class="space-y-4 mb-6">
+                    <!-- Cart items will be displayed here -->
+                </div>
+                <div class="border-t border-gray-300 pt-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="text-xl font-semibold text-gray-800">المجموع:</span>
+                        <span id="cartTotal" class="text-2xl font-bold text-blue-600">0 دج</span>
+                    </div>
+                    <button class="neu-button w-full p-4 text-xl font-bold text-gray-800">
+                        إتمام الشراء
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
-  </main>
 
-  <!-- Footer -->
-  <footer>
-    &copy; 2025 Tivaz — جميع الحقوق محفوظة
-  </footer>
+    <script>
+        let currentDesign = {
+            textColor: '#ffffff',
+            text: 'نصك هنا',
+            size: 'M',
+            quantity: 1,
+            basePrice: 3000,
+            tshirtColor: 'black',
+            hasDrawing: false,
+            drawingDescription: ''
+        };
+        
+        let cart = [];
 
-</body>
+        function changeTshirtColor(color1, color2, color3, element) {
+            currentDesign.tshirtColor = element.dataset.color;
+            
+            // Update T-shirt gradient
+            const gradient = document.getElementById('tshirtGradient');
+            gradient.innerHTML = `
+                <stop offset="0%" style="stop-color:${color1};stop-opacity:1" />
+                <stop offset="50%" style="stop-color:${color2};stop-opacity:1" />
+                <stop offset="100%" style="stop-color:${color3};stop-opacity:1" />
+            `;
+            
+            // Update stroke color
+            const tshirtPath = document.querySelector('svg path');
+            const tshirtEllipse = document.querySelector('svg ellipse');
+            tshirtPath.setAttribute('stroke', color1);
+            tshirtEllipse.setAttribute('stroke', color1);
+            
+            // Update selected state
+            document.querySelectorAll('.tshirt-color-option').forEach(opt => {
+                opt.classList.remove('selected-option');
+            });
+            element.classList.add('selected-option');
+        }
+
+        function changeTextColor(color, element) {
+            currentDesign.textColor = color;
+            document.getElementById('designText').style.color = color;
+            
+            // Update selected state
+            document.querySelectorAll('.text-color-option').forEach(opt => {
+                opt.classList.remove('selected-option');
+            });
+            element.classList.add('selected-option');
+        }
+
+        function updateDesignText() {
+            const text = document.getElementById('textInput').value || 'نصك هنا';
+            if (text.length <= 50) {
+                currentDesign.text = text;
+                document.getElementById('designText').textContent = text;
+                updatePrice();
+            } else {
+                document.getElementById('textInput').value = text.substring(0, 50);
+            }
+        }
+
+        function selectSize(size, element) {
+            currentDesign.size = size;
+            
+            // Update button styles
+            document.querySelectorAll('.size-btn').forEach(btn => {
+                btn.classList.remove('selected-option');
+            });
+            element.classList.add('selected-option');
+            
+            updatePrice();
+        }
+
+        function changeQuantity(delta) {
+            const newQuantity = currentDesign.quantity + delta;
+            if (newQuantity >= 1) {
+                currentDesign.quantity = newQuantity;
+                document.getElementById('quantity').textContent = newQuantity;
+                updatePrice();
+            }
+        }
+
+        function toggleDrawingRequest() {
+            const checkbox = document.getElementById('hasDrawing');
+            const textarea = document.getElementById('drawingRequest');
+            
+            currentDesign.hasDrawing = checkbox.checked;
+            if (checkbox.checked) {
+                textarea.style.opacity = '1';
+                textarea.disabled = false;
+            } else {
+                textarea.style.opacity = '0.5';
+                textarea.disabled = true;
+                currentDesign.drawingDescription = '';
+                textarea.value = '';
+            }
+            updatePrice();
+        }
+
+        function updatePrice() {
+            let price = currentDesign.basePrice;
+            
+            // Size multiplier
+            const sizeMultipliers = { 'S': 0.9, 'M': 1, 'L': 1.1, 'XL': 1.2 };
+            price *= sizeMultipliers[currentDesign.size] || 1;
+            
+            // Drawing cost
+            if (currentDesign.hasDrawing) {
+                price += 500;
+            }
+            
+            // Quantity discount (5% for 5+ items)
+            let totalPrice = price * currentDesign.quantity;
+            if (currentDesign.quantity >= 5) {
+                totalPrice *= 0.95;
+            }
+            
+            document.getElementById('totalPrice').textContent = Math.round(totalPrice) + ' دج';
+        }
+
+        function addToCart() {
+            if (currentDesign.text.trim() === '' || currentDesign.text === 'نصك هنا') {
+                alert('يرجى إدخال النص المطلوب طباعته');
+                return;
+            }
+            
+            if (currentDesign.hasDrawing && !document.getElementById('drawingRequest').value.trim()) {
+                alert('يرجى وصف الرسمة المطلوبة');
+                return;
+            }
+            
+            const design = {...currentDesign};
+            design.drawingDescription = document.getElementById('drawingRequest').value.trim();
+            
+            let price = design.basePrice;
+            
+            const sizeMultipliers = { 'S': 0.9, 'M': 1, 'L': 1.1, 'XL': 1.2 };
+            price *= sizeMultipliers[design.size] || 1;
+            
+            if (design.hasDrawing) {
+                price += 500;
+            }
+            
+            design.totalPrice = Math.round(price * design.quantity);
+            if (design.quantity >= 5) {
+                design.totalPrice = Math.round(design.totalPrice * 0.95);
+            }
+            
+            cart.push(design);
+            updateCartUI();
+            
+            // Show success message
+            alert('تم إضافة التصميم إلى سلة Tivaz بنجاح! 🎉');
+        }
+
+        function updateCartUI() {
+            const cartCount = document.getElementById('cartCount');
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            cartCount.textContent = cart.length;
+            
+            const totalPrice = cart.reduce((sum, item) => sum + item.totalPrice, 0);
+            cartTotal.textContent = totalPrice + ' دج';
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p class="text-gray-500 text-center">السلة فارغة</p>';
+            } else {
+                cartItems.innerHTML = cart.map((item, index) => `
+                    <div class="neu-card p-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h5 class="font-semibold text-gray-800">"${item.text}"</h5>
+                                <p class="text-sm text-gray-600">المقاس: ${item.size} | الكمية: ${item.quantity}</p>
+                                <p class="text-sm text-gray-600">لون التيشرت: ${getTshirtColorName(item.tshirtColor)}</p>
+                                <div class="flex items-center mt-1">
+                                    <span class="text-sm text-gray-600 ml-2">لون النص:</span>
+                                    <div class="w-4 h-4 rounded-full border border-gray-300" style="background-color: ${item.textColor}"></div>
+                                </div>
+                                ${item.hasDrawing ? `<p class="text-sm text-blue-600 mt-1">🎨 رسمة مخصصة: ${item.drawingDescription.substring(0, 30)}${item.drawingDescription.length > 30 ? '...' : ''}</p>` : ''}
+                            </div>
+                            <div class="text-left">
+                                <p class="font-semibold text-gray-800">${item.totalPrice} دج</p>
+                                <button onclick="removeFromCart(${index})" class="text-red-500 text-sm hover:text-red-700">
+                                    حذف
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function getTshirtColorName(color) {
+            const colorNames = {
+                'black': 'أسود',
+                'blue': 'أزرق', 
+                'red': 'أحمر',
+                'green': 'أخضر',
+                'brown': 'بني',
+                'purple': 'بنفسجي',
+                'gray': 'رمادي',
+                'white': 'أبيض'
+            };
+            return colorNames[color] || color;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        // Cart modal functionality
+        document.getElementById('cartBtn').addEventListener('click', () => {
+            document.getElementById('cartModal').classList.remove('hidden');
+        });
+
+        document.getElementById('closeCart').addEventListener('click', () => {
+            document.getElementById('cartModal').classList.add('hidden');
+        });
+
+        document.getElementById('cartModal').addEventListener('click', (e) => {
+            if (e.target.id === 'cartModal') {
+                document.getElementById('cartModal').classList.add('hidden');
+            }
+        });
+
+        // Initialize
+        document.getElementById('drawingRequest').style.opacity = '0.5';
+        document.getElementById('drawingRequest').disabled = true;
+        updatePrice();
+        updateCartUI();
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97e7ffd3075c2826',t:'MTc1Nzc3MDIyNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
