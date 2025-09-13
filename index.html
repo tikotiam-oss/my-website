@@ -1,12 +1,123 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>My First Free Website</title>
-</head>
-<body style="font-family: sans-serif; text-align: center; margin-top: 50px;">
-  <h1>🎉 Hello from my phone!</h1>
-  <p>This is my first free website published directly from mobile.</p>
-</body>
-</html>
+import { useState } from "react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Upload } from "lucide-react";
+
+export default function TShirtCustomizer() {
+  const [phone, setPhone] = useState("");
+  const [fabric, setFabric] = useState("");
+  const [tshirt, setTshirt] = useState("");
+  const [image, setImage] = useState(null);
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  const handleLogin = () => {
+    if (/^((\+213)|0)(5|6|7)[0-9]{8}$/.test(phone)) {
+      setLoggedIn(true);
+    } else {
+      alert("⚠️ أدخل رقم هاتف جزائري صحيح.");
+    }
+  };
+
+  const handleImageUpload = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      setImage(URL.createObjectURL(e.target.files[0]));
+    }
+  };
+
+  return (
+    <div className="max-w-md mx-auto mt-10">
+      {!loggedIn ? (
+        <Card className="p-6 bg-blue-950 text-white">
+          <CardContent>
+            <h2 className="text-xl font-bold mb-4"># تسجيل الدخول</h2>
+            <Input
+              placeholder="رقم الهاتف الجزائري"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              className="mb-4 bg-black text-white border-blue-700"
+            />
+            <Button
+              onClick={handleLogin}
+              className="w-full bg-green-700 hover:bg-green-600"
+            >
+              دخول
+            </Button>
+          </CardContent>
+        </Card>
+      ) : (
+        <Card className="p-6 bg-blue-950 text-white">
+          <CardContent>
+            <h2 className="text-xl font-bold mb-6">✦ صمم تيشيرتك ✦</h2>
+
+            {/* اختيار القماش */}
+            <div className="mb-4">
+              <label className="block mb-2">اختر نوع القماش</label>
+              <Select onValueChange={setFabric}>
+                <SelectTrigger className="bg-black text-white border-blue-700">
+                  <SelectValue placeholder="اختر القماش" />
+                </SelectTrigger>
+                <SelectContent className="bg-blue-950 text-white">
+                  <SelectItem value="cotton">قطن</SelectItem>
+                  <SelectItem value="polyester">بوليستر</SelectItem>
+                  <SelectItem value="mixed">مخلوط</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* اختيار نوع التيشورت */}
+            <div className="mb-4">
+              <label className="block mb-2">اختر نوع التيشورت</label>
+              <Select onValueChange={setTshirt}>
+                <SelectTrigger className="bg-black text-white border-blue-700">
+                  <SelectValue placeholder="اختر التيشورت" />
+                </SelectTrigger>
+                <SelectContent className="bg-blue-950 text-white">
+                  <SelectItem value="round">دائري الرقبة</SelectItem>
+                  <SelectItem value="vneck">V-neck</SelectItem>
+                  <SelectItem value="polo">بولو</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* رفع صورة */}
+            <div className="mb-4">
+              <label className="block mb-2">أضف صورة</label>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleImageUpload}
+                className="hidden"
+                id="upload"
+              />
+              <label
+                htmlFor="upload"
+                className="flex items-center gap-2 bg-blue-800 hover:bg-blue-700 cursor-pointer py-2 px-4 rounded-lg"
+              >
+                <Upload size={18} /> رفع صورة
+              </label>
+              {image && (
+                <img
+                  src={image}
+                  alt="preview"
+                  className="mt-4 w-full rounded-lg border border-blue-700"
+                />
+              )}
+            </div>
+
+            <Button className="w-full bg-green-700 hover:bg-green-600">
+              تأكيد الطلب
+            </Button>
+          </CardContent>
+        </Card>
+      )}
+    </div>
+  );
+}
