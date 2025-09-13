@@ -1,96 +1,179 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Tivaz - تيشورتات حسب الطلب</title>
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #000000, #0a1a33);
-      color: white;
-      text-align: center;
+    :root{
+      --bg1: #000;
+      --bg2: #0a1629;
+      --accent: #1e90ff;
+      --accent-glow: #4db8ff;
+      --card-bg: rgba(255,255,255,0.04);
     }
-    header {
-      padding: 20px;
-      font-size: 28px;
-      font-weight: bold;
-      color: #1e90ff;
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+      background: linear-gradient(135deg,var(--bg1),var(--bg2));
+      color:#fff;
     }
-    .card {
-      background: #111827;
-      max-width: 350px;
-      margin: 40px auto;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.7);
+
+    /* ===== HEADER ===== */
+    header{
+      padding:25px 16px;
+      text-align:center;
+      border-bottom:1px solid rgba(255,255,255,0.06);
+      margin-bottom:20px;
     }
-    input {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 8px;
-      border: 1px solid #1e90ff;
-      background: black;
-      color: white;
+    .logo-text{
+      font-size:40px;
+      font-weight:800;
+      color:var(--accent);
+      text-shadow: 0 0 8px var(--accent-glow),
+                   0 0 16px var(--accent),
+                   0 0 30px var(--accent-glow);
+      letter-spacing:2px;
     }
-    button {
-      width: 100%;
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      background: #1e90ff;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
+    .subtitle{
+      font-size:14px;
+      color:#bcd6ffb3;
+      margin-top:5px;
     }
-    button:hover {
-      background: #1c75d8;
+
+    /* ===== GRID ===== */
+    main{padding:20px;}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+      gap:20px;
+      max-width:1000px;
+      margin:0 auto;
     }
-    .hidden {
-      display: none;
+
+    /* ===== CARD ===== */
+    .card{
+      background:var(--card-bg);
+      border:1px solid rgba(77,166,255,0.1);
+      padding:16px;
+      border-radius:14px;
+      text-align:center;
+      transition:transform .25s ease, box-shadow .25s ease;
     }
-    img {
-      width: 200px;
-      margin-top: 20px;
-      border-radius: 8px;
-      border: 1px solid #1e90ff;
+    .card:hover{
+      transform:translateY(-8px);
+      box-shadow:0 12px 30px rgba(0,0,0,0.7);
+    }
+    .card img{
+      width:100%;
+      max-width:220px;
+      height:auto;
+      border-radius:10px;
+      border:2px solid rgba(77,166,255,0.15);
+      background:#0b1220;
+      margin-bottom:10px;
+    }
+    .product-name{
+      font-weight:700;
+      font-size:18px;
+      margin:6px 0;
+      color:#eaf4ff;
+    }
+    .product-desc{
+      font-size:13px;
+      margin:0;
+      color:#9fb6ffb3;
+    }
+    .price{
+      margin:10px 0;
+      font-weight:700;
+      font-size:16px;
+      color:var(--accent);
+    }
+
+    /* ===== BUTTON ===== */
+    .btn{
+      display:inline-block;
+      width:100%;
+      padding:12px;
+      border:none;
+      border-radius:10px;
+      background: linear-gradient(90deg,var(--accent),var(--accent-glow));
+      color:#001;
+      font-weight:700;
+      font-size:15px;
+      cursor:pointer;
+      transition:transform .2s, box-shadow .2s;
+    }
+    .btn:hover{
+      transform:scale(1.04);
+      box-shadow:0 0 15px var(--accent-glow);
+    }
+
+    /* ===== FOOTER ===== */
+    footer{
+      text-align:center;
+      padding:20px;
+      color:#9fb6ff99;
+      border-top:1px solid rgba(255,255,255,0.04);
+      margin-top:40px;
     }
   </style>
 </head>
 <body>
 
-  <header>Tivaz</header>
+  <!-- Header -->
+  <header>
+    <div class="logo-text">Tivaz</div>
+    <div class="subtitle">تيشورتات حسب الطلب</div>
+  </header>
 
-  <!-- صفحة تسجيل الدخول -->
-  <div class="card" id="login-card">
-    <h2>تسجيل الدخول</h2>
-    <input type="text" id="phone" placeholder="أدخل رقم هاتفك الجزائري">
-    <button onclick="login()">دخول</button>
-    <p style="font-size:12px; color:#bbb;">الرقم يجب أن يبدأ بـ +213 أو 05/06/07</p>
-  </div>
+  <!-- Main Products -->
+  <main>
+    <div class="grid">
+      <!-- Product 1 -->
+      <article class="card">
+        <img src="https://i.ibb.co/1zv5w6b/black-tshirt.png" alt="Classic Black T-Shirt">
+        <div class="product-name">Classic Black</div>
+        <p class="product-desc">تيشورت أسود كلاسيكي - قطن مريح</p>
+        <div class="price">د.ج 2500</div>
+        <button class="btn">Order Now</button>
+      </article>
 
-  <!-- صفحة المتجر -->
-  <div class="card hidden" id="shop-card">
-    <h2>✦ صمم تيشيرتك ✦</h2>
-    <img src="https://i.ibb.co/1zv5w6b/black-tshirt.png" alt="تيشورت أسود">
-    <p>تيشورت أسود بسيط</p>
-    <button>اطلب الآن</button>
-  </div>
+      <!-- Product 2 -->
+      <article class="card">
+        <img src="https://picsum.photos/seed/navy/400/400" alt="Deep Navy T-Shirt">
+        <div class="product-name">Deep Navy</div>
+        <p class="product-desc">تيشورت بلون أزرق غامق - لمسة أنيقة</p>
+        <div class="price">د.ج 2800</div>
+        <button class="btn">Order Now</button>
+      </article>
 
-  <script>
-    function login() {
-      const phone = document.getElementById("phone").value;
-      const regex = /^((\+213)|0)(5|6|7)[0-9]{8}$/;
+      <!-- Product 3 -->
+      <article class="card">
+        <img src="https://picsum.photos/seed/gray/400/400" alt="Heather Gray T-Shirt">
+        <div class="product-name">Heather Gray</div>
+        <p class="product-desc">قماش خفيف ومريح - مناسب للصيف</p>
+        <div class="price">د.ج 2200</div>
+        <button class="btn">Order Now</button>
+      </article>
 
-      if (regex.test(phone)) {
-        document.getElementById("login-card").classList.add("hidden");
-        document.getElementById("shop-card").classList.remove("hidden");
-      } else {
-        alert("⚠️ أدخل رقم هاتف جزائري صحيح.");
-      }
-    }
-  </script>
+      <!-- Product 4 -->
+      <article class="card">
+        <img src="https://picsum.photos/seed/white/400/400" alt="Sport White T-Shirt">
+        <div class="product-name">Sport White</div>
+        <p class="product-desc">تيشورت أبيض رياضي - تنفس جيد</p>
+        <div class="price">د.ج 2400</div>
+        <button class="btn">Order Now</button>
+      </article>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Tivaz — جميع الحقوق محفوظة
+  </footer>
 
 </body>
 </html>
